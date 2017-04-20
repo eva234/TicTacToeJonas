@@ -3,12 +3,14 @@ package com.example.teamrocket.tictactoe;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
@@ -37,6 +39,8 @@ public class MainActivity extends AppCompatActivity {
     Button button8;
     Button button9;
     ImageView playerSymbol;
+    TextView counterPlayer1;
+    TextView counterPlayer2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -90,8 +94,24 @@ public class MainActivity extends AppCompatActivity {
         button8 = (Button) findViewById(R.id.button8);
         button9 = (Button) findViewById(R.id.button9);
         playerSymbol = (ImageView) findViewById(R.id.playerSymbol);
-
         playerSymbol.setImageDrawable(getDrawable(symbolPlayer1));
+        ImageView imageViewSymbol1 = (ImageView) findViewById(R.id.firstPlayerSymbolCounter);
+        ImageView imageViewSymbol2 = (ImageView) findViewById(R.id.secondPlayerSymbolCounter);
+        imageViewSymbol1.setImageDrawable(getDrawable(symbolPlayer1));
+        imageViewSymbol2.setImageDrawable(getDrawable(symbolPlayer2));
+        counterPlayer1 = (TextView)findViewById(R.id.fistPlayerCounterText);
+        counterPlayer2 = (TextView)findViewById(R.id.secondPlayerCounterText);
+        counterPlayer1.setText("" + gamesWon[0]);
+        counterPlayer2.setText("" + gamesWon[1]);
+
+        Typeface customTypeface = Typeface.createFromAsset(this.getAssets(), getString(R.string.Goethe));
+        TextView firstPlayerCounter = (TextView) findViewById(R.id.fistPlayerCounterText);
+        firstPlayerCounter.setTypeface(customTypeface);
+        TextView secondPlayerCounter = (TextView) findViewById(R.id.secondPlayerCounterText);
+        secondPlayerCounter.setTypeface(customTypeface);
+        TextView playersTurnText = (TextView) findViewById(R.id.playersTurnText);
+        playersTurnText.setTypeface(customTypeface);
+
 
         View.OnClickListener buttonListener = new View.OnClickListener() {
             @Override
@@ -127,12 +147,14 @@ public class MainActivity extends AppCompatActivity {
 
                 if(checkEndGame()){
                     gamesPlayed++;
+                    updatePlayerCounter();
                     if(!checkIfGameOver()){
                         new AlertDialog.Builder(MainActivity.this)
                                 .setMessage("Nächste Runde")
                                 .setNeutralButton("Ok", new DialogInterface.OnClickListener() {
                                     public void onClick(DialogInterface dialog, int which) {
                                         cleanGame();
+
                                     }
                                 })
                                 .show();
@@ -150,6 +172,11 @@ public class MainActivity extends AppCompatActivity {
         button7.setOnClickListener(buttonListener);
         button8.setOnClickListener(buttonListener);
         button9.setOnClickListener(buttonListener);
+    }
+
+    private void updatePlayerCounter() {
+        counterPlayer1.setText("" + gamesWon[0]);
+        counterPlayer2.setText("" + gamesWon[1]);
     }
 
     private boolean checkIfGameOver() {
@@ -204,7 +231,7 @@ public class MainActivity extends AppCompatActivity {
                 .setMessage(message+"\nWillst du nochmal spielen?")
                 .setPositiveButton("Ja", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
-                        cleanGame();
+                        cleanAfterGameOver();
                     }
                 })
                 .setNegativeButton("Abbrechen", new DialogInterface.OnClickListener() {
@@ -256,7 +283,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void cleanGame() {
-        player = 0;
         iconsSet = 0;
 
 
@@ -279,13 +305,30 @@ public class MainActivity extends AppCompatActivity {
         button7.setText("");
         button8.setText("");
         button9.setText("");
-        playerSymbol.setImageDrawable(getDrawable(symbolPlayer1));
+        if(gamesPlayed%2!=0){
+            playerSymbol.setImageDrawable(getDrawable(symbolPlayer2));
+            player = 1;
+        }else {
+            playerSymbol.setImageDrawable(getDrawable(symbolPlayer1));
+            player = 0;
+        }
+
 
         for(int i=0; i<=2; i++) {
             for(int j=0; j<=2; j++) {
                 field[i][j] = -1;
             }
         }
+    }
+    private void cleanAfterGameOver(){
+        Log.i("####","cleanAfterGameOver");
+        gamesWon[0] = 0;
+        gamesWon[1] = 0;
+        counterPlayer1.setText("" + gamesWon[0]);
+        counterPlayer2.setText("" + gamesWon[1]);
+        gamesPlayed = 0;
+        cleanGame();
+
     }
 
 }

@@ -26,12 +26,13 @@ public class MenuActivity extends AppCompatActivity {
         setContentView(R.layout.activity_menu);
 
         firstPlayer = (Spinner) findViewById(R.id.spinner1);
-        Integer[] items = new Integer[]{R.drawable.rsz_tic_tac_toe_o, R.drawable.rsz_tic_tac_toe_x, R.drawable.rsz_tic_tac_toe_star};
+        Integer[] items = new Integer[]{R.drawable.rsz_tic_tac_toe_x, R.drawable.rsz_tic_tac_toe_o, R.drawable.rsz_tic_tac_toe_star};
         adapter1 = new SimpleSpinnerAdapter(this, items);
         firstPlayer.setAdapter(adapter1);
 
         secondPlayer = (Spinner) findViewById(R.id.spinner2);
-        adapter2 = new SimpleSpinnerAdapter(this, items);
+        Integer[] items2 = new Integer[]{R.drawable.rsz_tic_tac_toe_o, R.drawable.rsz_tic_tac_toe_x, R.drawable.rsz_tic_tac_toe_star};
+        adapter2 = new SimpleSpinnerAdapter(this, items2);
         adapter2.setDropDownViewResource(R.layout.support_simple_spinner_dropdown_item);
         secondPlayer.setAdapter(adapter2);
 

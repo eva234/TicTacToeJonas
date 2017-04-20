@@ -7,6 +7,59 @@
     android:layout_height="match_parent"
     tools:context="com.example.teamrocket.tictactoe.MainActivity">
 
+    <RelativeLayout
+        android:id="@+id/gameCounter"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:background="@drawable/spielerwahl"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
+        android:layout_marginLeft="7dp"
+        android:layout_marginRight="7dp"
+        android:layout_marginTop="7dp">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true">
+            <ImageView
+                android:id="@+id/firstPlayerSymbolCounter"
+                android:layout_width="50dp"
+                android:layout_height="50dp" />
+
+            <TextView
+                android:id="@+id/fistPlayerCounterText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="40dp"
+                android:textColor="@android:color/white"
+                android:layout_gravity="center_vertical"
+                android:paddingTop="5dp"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true">
+            <TextView
+                android:id="@+id/secondPlayerCounterText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="40dp"
+                android:layout_gravity="center_vertical"
+                android:paddingTop="5dp"
+                android:textColor="@android:color/white"/>
+
+            <ImageView
+                android:id="@+id/secondPlayerSymbolCounter"
+                android:layout_width="50dp"
+                android:layout_height="50dp" />
+        </LinearLayout>
+
+    </RelativeLayout>
+
     <GridLayout
         android:id="@+id/gamegrid"
         android:layout_width="wrap_content"
@@ -17,7 +70,10 @@
         android:paddingTop="50dp"
         android:paddingLeft="25dp"
         android:paddingRight="5dp"
-        android:paddingBottom="15dp">
+        android:paddingBottom="15dp"
+        android:layout_below="@id/gameCounter"
+        android:layout_marginBottom="50dp"
+        >
 
         <Button
             android:id="@+id/button1"
@@ -117,43 +173,20 @@
 
     </GridLayout>
 
+
+
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@id/gamegrid">
-        <ImageView
-            android:id="@+id/firstPlayerSymbolCounter"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
-
-        <TextView
-            android:id="@+id/fistPlayerCounterText"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
-
-        <TextView
-            android:id="@+id/secondPlayerCounterText"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
-
-        <ImageView
-            android:id="@+id/secondPlayerSymbolCounter"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
-
-    </LinearLayout>
-
-    <LinearLayout
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:layout_centerHorizontal="true"
-    android:layout_below="@id/gamegrid"
-    android:layout_marginBottom="15dp">
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="15dp">
         <TextView
             android:id="@+id/playersTurnText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="#ffffff"
+            android:textSize="20dp"
             android:text="Spieler an der Reihe:"
             android:layout_gravity="center_vertical"
             />
