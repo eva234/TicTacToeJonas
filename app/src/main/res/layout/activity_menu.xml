@@ -28,11 +28,7 @@
         android:paddingTop="15dp"
         android:paddingLeft="15dp"
         android:paddingRight="15dp"
-        android:background="@drawable/border"
-
-        >
-
-
+        android:background="@drawable/border">
 
         <TextView
             android:id="@+id/firstPlayerTextview"
@@ -40,9 +36,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:layout_gravity="center_vertical"
-            android:text="@string/player1"
-
-            />
+            android:text="@string/player1" />
 
         <Spinner
             android:id="@+id/spinner1"
