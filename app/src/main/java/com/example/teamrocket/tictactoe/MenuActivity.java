@@ -6,9 +6,11 @@ import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -53,9 +55,9 @@ public class MenuActivity extends AppCompatActivity {
         final int selectedItemPlayer1 = (int) firstPlayer.getItemAtPosition(firstPlayer.getSelectedItemPosition());
         final int selectedItemPlayer2 = (int) secondPlayer.getItemAtPosition(secondPlayer.getSelectedItemPosition());
         final String array[] = {"1", "3", "5"};
-        AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setTitle("Test")
-                .setItems(array, new DialogInterface.OnClickListener() {
+        final AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("Wie viele Runden sollen gespielt werden?")
+                .setSingleChoiceItems(array, 1, new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
                         // The 'which' argument contains the index position
                         // of the selected item
@@ -70,10 +72,13 @@ public class MenuActivity extends AppCompatActivity {
                 .setPositiveButton("Spiel starten", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
+                        ListView listView = ((AlertDialog)dialog).getListView();
+                        int checkedItem = listView.getCheckedItemPosition();
+                        Log.i("####", "which: "+checkedItem);
                         Intent intent = new Intent(MenuActivity.this, MainActivity.class);
                         intent.putExtra("symbol1", selectedItemPlayer1);
                         intent.putExtra("symbol2", selectedItemPlayer2);
-                        intent.putExtra("gamesToPlay", array[which]);
+                        intent.putExtra("gamesToPlay", array[checkedItem]);
                         startActivity(intent);
                     }
                 });
