@@ -1,12 +1,14 @@
 package com.example.teamrocket.tictactoe;
 
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 public class MenuActivity extends AppCompatActivity {
@@ -19,17 +21,17 @@ public class MenuActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu);
 
-        firstPlayer = (Spinner)findViewById(R.id.spinner1);
-        Integer[] items = new Integer[]{R.drawable.rsz_tic_tac_toe_o,R.drawable.rsz_tic_tac_toe_x,R.drawable.rsz_tic_tac_toe_star};
-        adapter1 = new SimpleSpinnerAdapter(this,items);
+        firstPlayer = (Spinner) findViewById(R.id.spinner1);
+        Integer[] items = new Integer[]{R.drawable.rsz_tic_tac_toe_o, R.drawable.rsz_tic_tac_toe_x, R.drawable.rsz_tic_tac_toe_star};
+        adapter1 = new SimpleSpinnerAdapter(this, items);
         firstPlayer.setAdapter(adapter1);
 
-        secondPlayer = (Spinner)findViewById(R.id.spinner2);
-        adapter2 = new SimpleSpinnerAdapter(this,items);
+        secondPlayer = (Spinner) findViewById(R.id.spinner2);
+        adapter2 = new SimpleSpinnerAdapter(this, items);
         adapter2.setDropDownViewResource(R.layout.support_simple_spinner_dropdown_item);
         secondPlayer.setAdapter(adapter2);
 
-        ImageButton startButton= (ImageButton) findViewById(R.id.startButton);
+        ImageButton startButton = (ImageButton) findViewById(R.id.startButton);
 
         startButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -37,6 +39,10 @@ public class MenuActivity extends AppCompatActivity {
                 startGame();
             }
         });
+
+        Typeface customTypeface = Typeface.createFromAsset(this.getAssets(), getString(R.string.Goethe));
+        TextView firstPlayerTextView = (TextView) findViewById(R.id.firstPlayerTextview);
+        firstPlayerTextView.setTypeface(customTypeface);
     }
 
     private void startGame() {

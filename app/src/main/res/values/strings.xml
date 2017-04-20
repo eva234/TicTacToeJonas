@@ -4,4 +4,6 @@
     <string name="symbol_o">O</string>
     <string name="player1">Spieler 1:</string>
     <string name="player2">Spieler 2:</string>
+
+    <string name="Goethe">fonts/GoetheBold.ttf</string>
 </resources>

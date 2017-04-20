@@ -47,14 +47,26 @@
 
     </LinearLayout>
 
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/changeSymbolFirstPlayerLayout"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="122dp"
+        >
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/spielerwahl"
+        android:layout_centerHorizontal="true"
+        />
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="122dp"
         android:id="@+id/changeSymbolSecondPlayerLayout"
-        android:layout_below="@+id/changeSymbolFirstPlayerLayout"
+        android:layout_centerHorizontal="true"
+
         >
 
         <TextView
@@ -75,4 +87,5 @@
 
 
     </LinearLayout>
+    </RelativeLayout>
 </RelativeLayout>
