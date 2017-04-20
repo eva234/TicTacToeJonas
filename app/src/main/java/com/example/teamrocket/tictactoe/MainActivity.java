@@ -9,14 +9,16 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
 
     private int player=0;
-    private int counter=0;
+    private int iconsSet =0;
     private int symbolPlayer1=R.drawable.rsz_tic_tac_toe_x_white;
     private int symbolPlayer2=R.drawable.rsz_tic_tac_toe_o_white;
+    private int[] gamesWon = {0, 0};
+    private int gamesPlayed=0;
+    private int gamesToPlay=1;
 
     private int[][] field = {
             {-1,-1,-1},
@@ -44,6 +46,7 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = getIntent();
         int symbol1 = intent.getIntExtra("symbol1", R.drawable.rsz_tic_tac_toe_x);
         int symbol2 = intent.getIntExtra("symbol2", R.drawable.rsz_tic_tac_toe_o);
+        gamesToPlay = intent.getIntExtra("gamesToPlay", 1);
 
         switch (symbol1) {
             case R.drawable.rsz_tic_tac_toe_x:
@@ -108,7 +111,7 @@ public class MainActivity extends AppCompatActivity {
                         player = 0;
                     }
                     thisButton.setText("set");
-                    counter++;
+                    iconsSet++;
                 }
 
                 String ausgabe="";
@@ -120,7 +123,10 @@ public class MainActivity extends AppCompatActivity {
                 }
                 Log.i("####", ausgabe);
 
-                checkEndGame();
+                if(checkEndGame()){
+                    gamesPlayed++;
+                    checkIfGameOver();
+                }
             }
         };
 
@@ -135,22 +141,48 @@ public class MainActivity extends AppCompatActivity {
         button9.setOnClickListener(buttonListener);
     }
 
-    private void checkEndGame() {
-        int gewinnerHorizontal = checkHorizontal();
-        int gewinnerVertical = checkVertical();
-        int gewinnerDiagonal = checkDiagonal();
-        if(gewinnerHorizontal != -1){
-            gewinnerHorizontal++;
-            startAlert("Spieler " + gewinnerHorizontal + " hat gewonnen!");
-        } else if(gewinnerVertical != -1){
-            gewinnerVertical++;
-            startAlert("Spieler " + gewinnerVertical + " hat gewonnen!");
-        } else if(gewinnerDiagonal != -1){
-            gewinnerDiagonal++;
-            startAlert("Spieler " + gewinnerDiagonal + " hat gewonnen!");
-        } else if(counter==9) {
-            startAlert("Unentschieden!");
+    private void checkIfGameOver() {
+        if(gamesPlayed == gamesToPlay) {
+            if(gamesWon[0] == gamesWon[1]) {
+                startAlert("Unentschieden!");
+            } else {
+                if(gamesWon[0] > gamesWon[1]) {
+                    startAlert("Spieler 1 hat gewonnen!");
+                } else {
+                    startAlert("Spieler 2 hat gewonnen!");
+                }
+            }
         }
+    }
+
+    private boolean checkEndGame() {
+        int winner = -1;
+
+        winner = checkHorizontal();
+        if(checkIfWon(winner)) {
+            return true;
+        }
+        winner = checkVertical();
+        if(checkIfWon(winner)) {
+            return true;
+        }
+        winner = checkDiagonal();
+        if(checkIfWon(winner)) {
+            return true;
+        }
+        if(iconsSet == 9) {
+            return true;
+        }
+
+        return false;
+    }
+
+    private boolean checkIfWon(int player) {
+        if(player != -1){
+            gamesWon[player]++;
+            return true;
+        }
+        return false;
     }
 
     private void startAlert(String message){
@@ -212,7 +244,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void cleanGame() {
         player = 0;
-        counter = 0;
+        iconsSet = 0;
 
 
         button1.setBackground(getDrawable(R.color.transparent));
@@ -241,14 +273,6 @@ public class MainActivity extends AppCompatActivity {
                 field[i][j] = -1;
             }
         }
-    }
-
-    public void setSymbolPlayer1(int symbol) {
-        symbolPlayer1=symbol;
-    }
-
-    public void setSymbolPlayer2(int symbol) {
-        symbolPlayer2=symbol;
     }
 
 }

@@ -6,11 +6,36 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.example.teamrocket.tictactoe.MainActivity">
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@id/gamegrid">
+            <ImageView
+                android:id="@+id/firstPlayerSymbolCounter"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:id="@+id/fistPlayerCounterText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:id="@+id/secondPlayerCounterText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <ImageView
+                android:id="@+id/secondPlayerSymbolCounter"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+        </LinearLayout>
 
         <GridLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginTop="100dp"
+            android:id="@+id/gamegrid"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:background="@drawable/background"
             android:columnCount="3"
             android:rowCount="3"
@@ -117,17 +142,19 @@
                     />
 
         </GridLayout>
-
+<LinearLayout
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_centerHorizontal="true"
+    android:layout_below="@id/gamegrid"
+    android:layout_marginBottom="15dp">
     <TextView
         android:id="@+id/playersTurnText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginStart="118dp"
-        android:layout_marginTop="30dp"
         android:textColor="#ffffff"
         android:text="Spieler an der Reihe:"
+        android:layout_gravity="center_vertical"
         />
 
     <ImageView
@@ -135,8 +162,9 @@
         android:layout_width="30dp"
         android:layout_height="30dp"
         android:layout_marginLeft="10dp"
-        android:layout_marginTop="25dp"
         android:layout_toEndOf="@+id/playersTurnText"
+        android:layout_gravity="center_vertical"
         android:textColor="#ffffff"
         />
+</LinearLayout>
 </RelativeLayout>
