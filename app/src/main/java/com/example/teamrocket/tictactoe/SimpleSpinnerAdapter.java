@@ -11,7 +11,7 @@ public class SimpleSpinnerAdapter extends ArrayAdapter<Integer> {
     private Integer[] images;
 
     public SimpleSpinnerAdapter(Context context, Integer[] images) {
-        super(context,android.R.layout.simple_spinner_dropdown_item, images);
+        super(context, android.R.layout.simple_spinner_item, images);
         this.images = images;
     }
 

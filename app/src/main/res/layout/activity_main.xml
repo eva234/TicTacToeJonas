@@ -6,165 +6,166 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.example.teamrocket.tictactoe.MainActivity">
-        <LinearLayout
+
+    <GridLayout
+        android:id="@+id/gamegrid"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/background"
+        android:columnCount="3"
+        android:rowCount="3"
+        android:paddingTop="50dp"
+        android:paddingLeft="25dp"
+        android:paddingRight="5dp"
+        android:paddingBottom="15dp">
+
+        <Button
+            android:id="@+id/button1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_above="@id/gamegrid">
-            <ImageView
-                android:id="@+id/firstPlayerSymbolCounter"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-
-            <TextView
-                android:id="@+id/fistPlayerCounterText"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-
-            <TextView
-                android:id="@+id/secondPlayerCounterText"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-
-            <ImageView
-                android:id="@+id/secondPlayerSymbolCounter"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-
-        </LinearLayout>
-
-        <GridLayout
-            android:id="@+id/gamegrid"
+            android:layout_columnWeight="1"
+            android:layout_rowWeight="1"
+            android:textColor="@color/transparent"
+            android:textSize="30dp"
+            android:tag="0"
+            android:background="@android:color/transparent"/>
+        <Button
+            android:id="@+id/button2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@drawable/background"
-            android:columnCount="3"
-            android:rowCount="3"
-            android:paddingTop="50dp"
-            android:paddingLeft="25dp"
-            android:paddingRight="5dp"
-            android:paddingBottom="15dp">
+            android:layout_columnWeight="1"
+            android:layout_rowWeight="1"
+            android:textColor="@color/transparent"
+            android:textSize="30dp"
+            android:tag="1"
+            android:background="@android:color/transparent"/>
+        <Button
+            android:id="@+id/button3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_columnWeight="1"
+            android:layout_rowWeight="1"
+            android:textColor="@color/transparent"
+            android:textSize="30dp"
+            android:tag="2"
+            android:background="@android:color/transparent"/>
+        <Button
+            android:id="@+id/button4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_columnWeight="1"
+            android:layout_rowWeight="1"
+            android:textColor="@color/transparent"
+            android:textSize="30dp"
+            android:tag="3"
+            android:background="@android:color/transparent"/>
+            />
+        <Button
+            android:id="@+id/button5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_columnWeight="1"
+            android:layout_rowWeight="1"
+            android:textColor="@color/transparent"
+            android:textSize="30dp"
+            android:tag="4"
+            android:background="@android:color/transparent"/>
+            />
+        <Button
+            android:id="@+id/button6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_columnWeight="1"
+            android:layout_rowWeight="1"
+            android:textColor="@color/transparent"
+            android:textSize="30dp"
+            android:tag="5"
+            android:background="@android:color/transparent"/>
+            />
+        <Button
+            android:id="@+id/button7"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_columnWeight="1"
+            android:layout_rowWeight="1"
+            android:textColor="@color/transparent"
+            android:textSize="30dp"
+            android:tag="6"
+            android:background="@android:color/transparent"/>
+            />
+        <Button
+            android:id="@+id/button8"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_columnWeight="1"
+            android:layout_rowWeight="1"
+            android:textColor="@color/transparent"
+            android:textSize="30dp"
+            android:tag="7"
+            android:background="@android:color/transparent"/>
+            />
+        <Button
+            android:id="@+id/button9"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_columnWeight="1"
+            android:layout_rowWeight="1"
+            android:textColor="@color/transparent"
+            android:textSize="30dp"
+            android:tag="8"
+            android:background="@android:color/transparent"/>
 
-                <Button
-                    android:id="@+id/button1"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_columnWeight="1"
-                    android:layout_rowWeight="1"
-                    android:textColor="@color/transparent"
-                    android:textSize="30dp"
-                    android:tag="0"
-                    android:background="@android:color/transparent"/>
-                <Button
-                    android:id="@+id/button2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_columnWeight="1"
-                    android:layout_rowWeight="1"
-                    android:textColor="@color/transparent"
-                    android:textSize="30dp"
-                    android:tag="1"
-                    android:background="@android:color/transparent"/>
-                <Button
-                    android:id="@+id/button3"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_columnWeight="1"
-                    android:layout_rowWeight="1"
-                    android:textColor="@color/transparent"
-                    android:textSize="30dp"
-                    android:tag="2"
-                    android:background="@android:color/transparent"/>
-                <Button
-                    android:id="@+id/button4"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_columnWeight="1"
-                    android:layout_rowWeight="1"
-                    android:textColor="@color/transparent"
-                    android:textSize="30dp"
-                    android:tag="3"
-                    android:background="@android:color/transparent"/>
-                    />
-                <Button
-                    android:id="@+id/button5"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_columnWeight="1"
-                    android:layout_rowWeight="1"
-                    android:textColor="@color/transparent"
-                    android:textSize="30dp"
-                    android:tag="4"
-                    android:background="@android:color/transparent"/>
-                    />
-                <Button
-                    android:id="@+id/button6"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_columnWeight="1"
-                    android:layout_rowWeight="1"
-                    android:textColor="@color/transparent"
-                    android:textSize="30dp"
-                    android:tag="5"
-                    android:background="@android:color/transparent"/>
-                    />
-                <Button
-                    android:id="@+id/button7"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_columnWeight="1"
-                    android:layout_rowWeight="1"
-                    android:textColor="@color/transparent"
-                    android:textSize="30dp"
-                    android:tag="6"
-                    android:background="@android:color/transparent"/>
-                    />
-                <Button
-                    android:id="@+id/button8"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_columnWeight="1"
-                    android:layout_rowWeight="1"
-                    android:textColor="@color/transparent"
-                    android:textSize="30dp"
-                    android:tag="7"
-                    android:background="@android:color/transparent"/>
-                    />
-                <Button
-                    android:id="@+id/button9"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_columnWeight="1"
-                    android:layout_rowWeight="1"
-                    android:textColor="@color/transparent"
-                    android:textSize="30dp"
-                    android:tag="8"
-                    android:background="@android:color/transparent"/>
-                    />
+    </GridLayout>
 
-        </GridLayout>
-<LinearLayout
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/gamegrid">
+        <ImageView
+            android:id="@+id/firstPlayerSymbolCounter"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:id="@+id/fistPlayerCounterText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:id="@+id/secondPlayerCounterText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <ImageView
+            android:id="@+id/secondPlayerSymbolCounter"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+    </LinearLayout>
+
+    <LinearLayout
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:layout_centerHorizontal="true"
     android:layout_below="@id/gamegrid"
     android:layout_marginBottom="15dp">
-    <TextView
-        android:id="@+id/playersTurnText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textColor="#ffffff"
-        android:text="Spieler an der Reihe:"
-        android:layout_gravity="center_vertical"
-        />
+        <TextView
+            android:id="@+id/playersTurnText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#ffffff"
+            android:text="Spieler an der Reihe:"
+            android:layout_gravity="center_vertical"
+            />
 
-    <ImageView
-        android:id="@+id/playerSymbol"
-        android:layout_width="30dp"
-        android:layout_height="30dp"
-        android:layout_marginLeft="10dp"
-        android:layout_toEndOf="@+id/playersTurnText"
-        android:layout_gravity="center_vertical"
-        android:textColor="#ffffff"
-        />
-</LinearLayout>
+        <ImageView
+            android:id="@+id/playerSymbol"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginLeft="10dp"
+            android:layout_toEndOf="@+id/playersTurnText"
+            android:layout_gravity="center_vertical"
+            android:textColor="#ffffff"
+            />
+    </LinearLayout>
 </RelativeLayout>

@@ -9,6 +9,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -46,7 +47,8 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = getIntent();
         int symbol1 = intent.getIntExtra("symbol1", R.drawable.rsz_tic_tac_toe_x);
         int symbol2 = intent.getIntExtra("symbol2", R.drawable.rsz_tic_tac_toe_o);
-        gamesToPlay = intent.getIntExtra("gamesToPlay", 1);
+        gamesToPlay = Integer.parseInt(intent.getStringExtra("gamesToPlay"));
+        Log.i("####", "games to play: "+gamesToPlay);
 
         switch (symbol1) {
             case R.drawable.rsz_tic_tac_toe_x:
