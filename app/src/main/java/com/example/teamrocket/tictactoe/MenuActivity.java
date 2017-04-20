@@ -1,8 +1,10 @@
 package com.example.teamrocket.tictactoe;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Typeface;
 import android.os.Bundle;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
@@ -46,16 +48,40 @@ public class MenuActivity extends AppCompatActivity {
     }
 
     private void startGame() {
-        int selectedItemPlayer1 = (int) firstPlayer.getItemAtPosition(firstPlayer.getSelectedItemPosition());
-        int selectedItemPlayer2 = (int) secondPlayer.getItemAtPosition(secondPlayer.getSelectedItemPosition());
+        final int selectedItemPlayer1 = (int) firstPlayer.getItemAtPosition(firstPlayer.getSelectedItemPosition());
+        final int selectedItemPlayer2 = (int) secondPlayer.getItemAtPosition(secondPlayer.getSelectedItemPosition());
+        final String array[] = {"1", "3", "5"};
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("Test")
+                .setItems(array, new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        // The 'which' argument contains the index position
+                        // of the selected item
+                    }
+                })
+                .setNegativeButton("Abbrechen", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+
+                    }
+                })
+                .setPositiveButton("Spiel starten", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        Intent intent = new Intent(MenuActivity.this, MainActivity.class);
+                        intent.putExtra("symbol1", selectedItemPlayer1);
+                        intent.putExtra("symbol2", selectedItemPlayer2);
+                        intent.putExtra("gamesToPlay", array[which]);
+                        startActivity(intent);
+                    }
+                });
+
         if(selectedItemPlayer1 == selectedItemPlayer2) {
             Toast toast = Toast.makeText(this, "Es müssen unterschiedliche Symbole ausgewählt werden!", Toast.LENGTH_LONG);
             toast.show();
         } else {
-            Intent intent = new Intent(this, MainActivity.class);
-            intent.putExtra("symbol1", selectedItemPlayer1);
-            intent.putExtra("symbol2", selectedItemPlayer2);
-            startActivity(intent);
+            AlertDialog dialog = builder.create();
+            dialog.show();
         }
 
     }
