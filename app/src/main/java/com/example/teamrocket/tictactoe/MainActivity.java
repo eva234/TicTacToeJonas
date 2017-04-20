@@ -125,7 +125,16 @@ public class MainActivity extends AppCompatActivity {
 
                 if(checkEndGame()){
                     gamesPlayed++;
-                    checkIfGameOver();
+                    if(!checkIfGameOver()){
+                        new AlertDialog.Builder(MainActivity.this)
+                                .setMessage("Nächste Runde")
+                                .setNeutralButton("Ok", new DialogInterface.OnClickListener() {
+                                    public void onClick(DialogInterface dialog, int which) {
+                                        cleanGame();
+                                    }
+                                })
+                                .show();
+                    }
                 }
             }
         };
@@ -141,7 +150,7 @@ public class MainActivity extends AppCompatActivity {
         button9.setOnClickListener(buttonListener);
     }
 
-    private void checkIfGameOver() {
+    private boolean checkIfGameOver() {
         if(gamesPlayed == gamesToPlay) {
             if(gamesWon[0] == gamesWon[1]) {
                 startAlert("Unentschieden!");
@@ -152,7 +161,9 @@ public class MainActivity extends AppCompatActivity {
                     startAlert("Spieler 2 hat gewonnen!");
                 }
             }
+            return true;
         }
+        return false;
     }
 
     private boolean checkEndGame() {
