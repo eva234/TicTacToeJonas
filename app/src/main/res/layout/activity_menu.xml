@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="vertical" android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/background_menu"
     >
@@ -18,17 +19,15 @@
         android:background="@drawable/startbutton"/>
 
     <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="270dp"
+        android:layout_height="100dp"
         android:orientation="horizontal"
         android:id="@+id/changeSymbolFirstPlayerLayout"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="86dp"
-        android:paddingBottom="15dp"
-        android:paddingTop="15dp"
-        android:paddingLeft="15dp"
-        android:paddingRight="15dp"
-        android:background="@drawable/border">
+        android:paddingRight="30dp"
+        android:paddingLeft="20dp"
+        android:background="@drawable/spielerwahl">
 
         <TextView
             android:id="@+id/firstPlayerTextview"
@@ -42,19 +41,23 @@
             android:id="@+id/spinner1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
             android:background="@android:drawable/btn_dropdown"
             android:spinnerMode="dropdown" />
 
     </LinearLayout>
 
     <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="270dp"
+        android:layout_height="100dp"
         android:orientation="horizontal"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="122dp"
+        android:layout_marginTop="70dp"
+        android:paddingRight="30dp"
+        android:paddingLeft="20dp"
         android:id="@+id/changeSymbolSecondPlayerLayout"
         android:layout_below="@+id/changeSymbolFirstPlayerLayout"
+        android:background="@drawable/spielerwahl"
         >
 
         <TextView
@@ -70,6 +73,7 @@
             android:id="@+id/spinner2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
             android:background="@android:drawable/btn_dropdown"
             android:spinnerMode="dropdown" />
 
