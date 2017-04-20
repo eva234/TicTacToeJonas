@@ -43,6 +43,8 @@ public class MenuActivity extends AppCompatActivity {
         Typeface customTypeface = Typeface.createFromAsset(this.getAssets(), getString(R.string.Goethe));
         TextView firstPlayerTextView = (TextView) findViewById(R.id.firstPlayerTextview);
         firstPlayerTextView.setTypeface(customTypeface);
+        TextView secondPlayerTextView = (TextView) findViewById(R.id.secondPlayerTextview);
+        secondPlayerTextView.setTypeface(customTypeface);
     }
 
     private void startGame() {
