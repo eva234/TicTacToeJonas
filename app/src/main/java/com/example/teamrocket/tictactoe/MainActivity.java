@@ -38,9 +38,9 @@ public class MainActivity extends AppCompatActivity {
     Button button7;
     Button button8;
     Button button9;
-    ImageView playerSymbol;
-    TextView counterPlayer1;
-    TextView counterPlayer2;
+    private ImageView playerSymbol;
+    private TextView counterPlayer1;
+    private TextView counterPlayer2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
