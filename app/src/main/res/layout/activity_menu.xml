@@ -10,11 +10,12 @@
 
     <ImageButton
         android:id="@+id/startButton"
-        android:layout_width="160dp"
-        android:layout_height="80dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="28dp"
+        android:layout_marginBottom="15dp"
+        android:layout_marginTop="20dp"
         android:background="@drawable/startbutton"/>
 
     <LinearLayout
@@ -23,7 +24,7 @@
         android:orientation="horizontal"
         android:id="@+id/changeSymbolFirstPlayerLayout"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="86dp"
+        android:layout_marginTop="55dp"
         android:paddingRight="30dp"
         android:paddingLeft="30dp"
         android:background="@drawable/spielerwahl">
