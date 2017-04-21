@@ -23,6 +23,7 @@ public class MainActivity extends AppCompatActivity {
     private int[] gamesWon = {0, 0};
     private int gamesPlayed=0;
     private int gamesToPlay=1;
+    int lastWinner = -1;
 
     private int[][] field = {
             {-1,-1,-1},
@@ -155,12 +156,10 @@ public class MainActivity extends AppCompatActivity {
                 Log.i("####", ausgabe);
 
                 if(checkEndGame()){
-                    Log.i("####", "check end game true");
                     gamesPlayed++;
                     updatePlayerCounter();
                     if(!checkIfGameOver()){
-                        Log.i("###", "game not over, games playesd: "+gamesPlayed+" games to play: "+gamesToPlay);
-                        customAlert.startNextRoundAlert("Nächste Runde", new View.OnClickListener() {
+                        customAlert.startNextRoundAlert("Spieler "+ lastWinner+" hat gewonnen.\nNächste Runde spielen!", new View.OnClickListener() {
                             @Override
                             public void onClick(View v) {
                                 cleanGame();
@@ -249,6 +248,8 @@ public class MainActivity extends AppCompatActivity {
     private boolean checkIfWon(int player) {
         if(player != -1){
             gamesWon[player]++;
+            player++;
+            lastWinner = player;
             return true;
         }
         return false;
@@ -330,6 +331,8 @@ public class MainActivity extends AppCompatActivity {
                 field[i][j] = -1;
             }
         }
+
+        lastWinner = -1;
     }
 
     private void cleanAfterGameOver(){
