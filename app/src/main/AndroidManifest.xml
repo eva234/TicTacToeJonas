@@ -10,11 +10,14 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
 
-        <activity android:name=".MainActivity"></activity>
+        <activity android:name=".MainActivity"
+            android:theme="@style/Theme.AppCompat.Light.DarkActionBar"></activity>
 
-        <activity android:name=".MenuActivity"></activity>
+        <activity android:name=".MenuActivity"
+            android:theme="@style/Theme.AppCompat.Light.DarkActionBar"></activity>
 
-        <activity android:name=".StartActivity">
+        <activity android:name=".StartActivity"
+            android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
