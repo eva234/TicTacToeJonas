@@ -8,9 +8,6 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-/**
- * Created by teamrocket on 20.04.17.
- */
 
 public class StartActivity extends AppCompatActivity {
 
