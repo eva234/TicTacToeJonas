@@ -27,9 +27,5 @@ public class StartActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-        Typeface customTypeface = Typeface.createFromAsset(this.getAssets(), getString(R.string.Goethe));
-        TextView clickToStartTextView = (TextView) findViewById(R.id.clickToStartTextView);
-        clickToStartTextView.setTypeface(customTypeface);
-
     }
 }

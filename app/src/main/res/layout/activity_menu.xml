@@ -26,7 +26,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="86dp"
         android:paddingRight="30dp"
-        android:paddingLeft="20dp"
+        android:paddingLeft="30dp"
         android:background="@drawable/spielerwahl">
 
         <TextView
@@ -34,17 +34,17 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:textSize="25dp"
+            android:textSize="30dp"
             android:textColor="@android:color/white"
             android:layout_gravity="center_vertical"
             android:text="@string/player1" />
 
         <Spinner
             android:id="@+id/spinner1"
-            android:layout_width="89dp"
-            android:layout_height="60dp"
+            android:layout_width="80dp"
+            android:layout_height="50dp"
             android:layout_gravity="center_vertical"
-            android:background="@drawable/pixel_backgroud"
+            android:background="@drawable/dropdown_button_background"
             android:spinnerMode="dropdown" />
 
     </LinearLayout>
@@ -56,7 +56,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="70dp"
         android:paddingRight="30dp"
-        android:paddingLeft="20dp"
+        android:paddingLeft="30dp"
         android:id="@+id/changeSymbolSecondPlayerLayout"
         android:layout_below="@+id/changeSymbolFirstPlayerLayout"
         android:background="@drawable/spielerwahl">
@@ -66,17 +66,17 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:textSize="25dp"
+            android:textSize="30dp"
             android:textColor="@android:color/white"
             android:layout_gravity="center_vertical"
             android:text="@string/player2" />
 
         <Spinner
             android:id="@+id/spinner2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="80dp"
+            android:layout_height="50dp"
             android:layout_gravity="center_vertical"
-            android:background="@android:drawable/btn_dropdown"
+            android:background="@drawable/dropdown_button_background"
             android:spinnerMode="dropdown" />
     </LinearLayout>
 
