@@ -8,6 +8,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.view.Window;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -41,12 +42,15 @@ public class MainActivity extends AppCompatActivity {
     private ImageView playerSymbol;
     private TextView counterPlayer1;
     private TextView counterPlayer2;
+    private CustomAlert customAlert;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         setUpLayout();
+
+        initCustomAlert();
 
         Intent intent = getIntent();
         int symbol1 = intent.getIntExtra("symbol1", R.drawable.rsz_tic_tac_toe_x);
@@ -83,6 +87,11 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    private void initCustomAlert() {
+        customAlert = new CustomAlert(this, R.style.MyAlertDialog);
+        customAlert.requestWindowFeature(Window.FEATURE_NO_TITLE);
+    }
+
     private void setUpLayout(){
         button1 = (Button) findViewById(R.id.button1);
         button2 = (Button) findViewById(R.id.button2);
@@ -104,7 +113,7 @@ public class MainActivity extends AppCompatActivity {
         counterPlayer1.setText("" + gamesWon[0]);
         counterPlayer2.setText("" + gamesWon[1]);
 
-        Typeface customTypeface = Typeface.createFromAsset(this.getAssets(), getString(R.string.Goethe));
+        final Typeface customTypeface = Typeface.createFromAsset(this.getAssets(), getString(R.string.Goethe));
         TextView firstPlayerCounter = (TextView) findViewById(R.id.fistPlayerCounterText);
         firstPlayerCounter.setTypeface(customTypeface);
         TextView secondPlayerCounter = (TextView) findViewById(R.id.secondPlayerCounterText);
@@ -146,18 +155,18 @@ public class MainActivity extends AppCompatActivity {
                 Log.i("####", ausgabe);
 
                 if(checkEndGame()){
+                    Log.i("####", "check end game true");
                     gamesPlayed++;
                     updatePlayerCounter();
                     if(!checkIfGameOver()){
-                        new AlertDialog.Builder(MainActivity.this)
-                                .setMessage("Nächste Runde")
-                                .setNeutralButton("Ok", new DialogInterface.OnClickListener() {
-                                    public void onClick(DialogInterface dialog, int which) {
-                                        cleanGame();
-
-                                    }
-                                })
-                                .show();
+                        Log.i("###", "game not over, games playesd: "+gamesPlayed+" games to play: "+gamesToPlay);
+                        customAlert.startNextRoundAlert("Nächste Runde", new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                cleanGame();
+                                customAlert.dismiss();
+                            }
+                        });
                     }
                 }
             }
@@ -180,23 +189,43 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private boolean checkIfGameOver() {
+        View.OnClickListener cancelButtonListener = new View.OnClickListener() {
+            @Override
+            public void onClick(View cancelButton) {
+                customAlert.dismiss();
+                Intent intent = new Intent(MainActivity.this, MenuActivity.class);
+                startActivity(intent);
+            }
+        };
+
+        View.OnClickListener newGameButtonListener = new View.OnClickListener() {
+            @Override
+            public void onClick(View newGameButton) {
+                cleanAfterGameOver();
+                customAlert.dismiss();
+            }
+        };
+
         if(gamesPlayed == gamesToPlay) {
+            Log.i("####", "game over");
+            String message;
             if(gamesWon[0] == gamesWon[1]) {
-                startAlert("Unentschieden!");
+                message = "Unentschieden";
             } else {
                 if(gamesWon[0] > gamesWon[1]) {
-                    startAlert("Spieler 1 hat gewonnen!");
+                    message = "Spieler 1 hat gewonnen!";
                 } else {
-                    startAlert("Spieler 2 hat gewonnen!");
+                    message = "Spieler 2 hat gewonnen!";
                 }
             }
+            customAlert.startNewGameAlert(message, cancelButtonListener, newGameButtonListener);
             return true;
         }
         return false;
     }
 
     private boolean checkEndGame() {
-        int winner = -1;
+        int winner;
 
         winner = checkHorizontal();
         if(checkIfWon(winner)) {
@@ -225,23 +254,6 @@ public class MainActivity extends AppCompatActivity {
         return false;
     }
 
-    private void startAlert(String message){
-        new AlertDialog.Builder(MainActivity.this)
-                .setTitle("Spiel Beendet")
-                .setMessage(message+"\nWillst du nochmal spielen?")
-                .setPositiveButton("Ja", new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int which) {
-                        cleanAfterGameOver();
-                    }
-                })
-                .setNegativeButton("Abbrechen", new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int which) {
-                        Intent intent = new Intent(MainActivity.this, MenuActivity.class);
-                        startActivity(intent);
-                    }
-                })
-                .show();
-    }
 
     private int checkDiagonal() {
         if(field[0][0] == field[1][1] && field[0][0] == field[2][2] && field[0][0] !=-1) {
@@ -285,7 +297,6 @@ public class MainActivity extends AppCompatActivity {
     public void cleanGame() {
         iconsSet = 0;
 
-
         button1.setBackground(getDrawable(R.color.transparent));
         button2.setBackground(getDrawable(R.color.transparent));
         button3.setBackground(getDrawable(R.color.transparent));
@@ -320,6 +331,7 @@ public class MainActivity extends AppCompatActivity {
             }
         }
     }
+
     private void cleanAfterGameOver(){
         Log.i("####","cleanAfterGameOver");
         gamesWon[0] = 0;
@@ -328,7 +340,6 @@ public class MainActivity extends AppCompatActivity {
         counterPlayer2.setText("" + gamesWon[1]);
         gamesPlayed = 0;
         cleanGame();
-
     }
 
 }
